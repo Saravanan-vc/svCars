@@ -5,7 +5,6 @@ const app = express();
 app.use(express.json());
 
 app.get('/',(req,res)=>{
-    console.log(`${otp}`);
     res.status(200).json({'sucess':false});
 });
 

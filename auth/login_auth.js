@@ -2,7 +2,6 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const addData = require('../firebase/add_data');
 const Router = express.Router();
-const doc = Math.floor(100000 + Math.random() * 900000);
 
 Router.post('/login', (req, res) => {
     const { email, password } = req.body;
@@ -14,6 +13,7 @@ Router.post('/login', (req, res) => {
             "message": "Enter required details",
         });
     }
+    const doc = Math.floor(100000 + Math.random() * 900000);
     addData('email', `${doc}`, { "email": `${email}`, "password": `${password}` });
     res.status(200).json({
         "success": true,
@@ -30,6 +30,7 @@ Router.post('/newuser', async (req, res) => {
             "message": "Enter required details",
         });
     } else {
+        const doc = Math.floor(100000 + Math.random() * 900000);
         const haspassword = await bcrypt.hash(password, 10);
         addData('email', `${doc}`, { "name": `${name}`, "email": `${email}`, "password": `${haspassword}` });
         res.status(200).json({

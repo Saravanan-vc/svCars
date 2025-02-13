@@ -8,10 +8,10 @@ const addData = (collection, doc, data) => {
         .get()
         .then((value) => {
             if (value.exists) {
-                const doc = Math.floor(100000 + Math.random() * 900000);
+                 const otp = Math.floor(100000 + Math.random() * 900000);
                 database
                     .collection(collection)
-                    .doc(`${doc}`)
+                    .doc(`${otp}`)
                     .set(data)
                     .then(() => console
                         .log("✅ Firestore write successful!"))
